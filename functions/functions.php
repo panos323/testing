@@ -164,14 +164,30 @@ function insertVotes($fullName, $email, $msgVote, $voteOne, $voteTwo, $voteThree
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
-                session_unset();
-                session_destroy();
+                //
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
         
             mysqli_close($conn);
         }
+}
 
-    
+
+function firstAvg() {
+    global $conn;
+
+    $sql3 = "SELECT AVG(vote_one) AS avg1, AVG(vote_two) AS avg2, AVG(vote_three) AS avg3, AVG(vote_four) AS avg4, AVG(vote_five) AS avg5, AVG(vote_six) AS avg6 FROM voters";
+    $result = mysqli_query($conn, $sql3);
+
+    while($row = mysqli_fetch_array($result)) {
+        $_SESSION["resultsVote1"] =  round($row['avg1'],2) * 100;
+        $_SESSION["resultsVote2"] =  round($row['avg2'],2) * 100;
+        $_SESSION["resultsVote3"] =  round($row['avg3'],2) * 100;
+        $_SESSION["resultsVote4"] =  round($row['avg4'],2) * 100;
+        $_SESSION["resultsVote5"] =  round($row['avg5'],2) * 100;
+        $_SESSION["resultsVote6"] =  round($row['avg6'],2) * 100;
+    }
+
+   
 }
