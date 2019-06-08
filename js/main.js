@@ -1,8 +1,55 @@
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-
 $(document).ready(function() {
+
+    var myForm = $("#myForm");
+    
+    //  FORM SUMBIT
+    myForm.on("submit", function(e) {
+        var firstname = $("#nameVote").val();
+        var emailcheck = $("#emailVote").val();
+        //var isCheckForm = $("#checkForm").is(":checked");
+    
+        validateName(firstname,e);
+        validateEmail(emailcheck,e);
+        //validateCheckboxField(isCheckForm,e);
+
+    }) // on submit 
+    
+    
+    /*------------------------------FUNCTIONS FOR VALIDATION-------------------------------------------------*/
+    
+    
+  function validateName(firstname,e) {
+      if (!isValidName(firstname)) {
+          $("#nameVote").css('border', "1px solid red");
+          e.preventDefault();
+      } 
+  } //end function 
+
+  function isValidName(firstname) {
+      return firstname.length >= 2;
+  } // function isValidName
+
+
+  function validateEmail(email,e) {
+    if (!isValidEmail(email)) {
+        $("#emailVote").css('border', "1px solid red");
+        e.preventDefault();
+    } 
+} //end function 
+
+function isValidEmail(email) {
+    return email.length >= 6;
+} // function isValidName
+
+/*
+function validateCheckboxField(isCheckForm,e) {
+    if (!isCheckForm) {
+        $("#checkbox").css('border', "1px solid red");
+    } 
+} //end function
+*/
+    
+    
 
 
     $(function(){

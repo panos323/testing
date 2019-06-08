@@ -24,7 +24,7 @@
     }
 
 ?>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" onSubmit="window.location.reload()">
+  <form id="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" >
     <div class="container  py-5">
         <div class="row py-4">
             <div class="col-md-12">
