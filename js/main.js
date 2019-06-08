@@ -1,35 +1,8 @@
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+
 $(document).ready(function() {
-
-  // $('#voteOneBtn').on('click', fistBtn) 
-
-  // function fistBtn(e) {
-  //   e.preventDefault()
-
-  //   console.log("THIS HAPPENED");
-  //   var cat = $(this).val();
-  //   var curr = 'songs.php';
-  //   $.ajax({
-  //       url: curr,
-  //       type: 'POST',
-  //       dataType: 'json',
-  //       data: {
-  //           category: cat
-  
-  //       }, error: function(xhr,err) {
-  //         console.log(xhr)
-  //         console.log(err)
-  //       },success: function (result) {
-  //         alert(result)
-  //     }
-
-  //   }).done(function(res) {
-  //     console.log("THIS HAPPENED AGAAAAAIIIIn");
-  //          console.log(res);
-  //          console.log(ok)
-  //       })
-  // }
-
-
 
 
     $(function(){
@@ -90,6 +63,19 @@ $(document).ready(function() {
       });
 
 
+   var myCounter = 1;
+   $("body").on("click", ".btnChangeText", function() {
+      if (myCounter <= 4) {
+        myCounter++;
+        let x = $(".changeText" +myCounter);
+        let y = $(".changeText" +[ myCounter-1]);
+        x.addClass("addIt");
+        x.removeClass("removeIt");
+        y.removeClass("addIt");
+        y.addClass("removeIt");
+      } 
+      
+   });
 
 }); //PAGE LOADED
 

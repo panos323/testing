@@ -46,6 +46,11 @@ define('URLROOT', 'http://localhost/PHP_trainning');
             <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT . '\songs.php';?>">Songs</a>
             </li>
+            <?php if (isset($_SESSION['userLogged'])) { ?>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT . '\gifts.php';?>">Gifts</a>
+            </li>
+            <?php } ?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">

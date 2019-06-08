@@ -164,7 +164,7 @@ function insertVotes($fullName, $email, $msgVote, $voteOne, $voteTwo, $voteThree
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
-                //
+                header("Location: songs.php"); 
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
@@ -190,4 +190,42 @@ function firstAvg() {
     }
 
    
+}
+
+function findSum() {
+    global $conn;
+
+    $sql4 = "SELECT SUM(vote_one) AS sum1, SUM(vote_two) AS sum2, SUM(vote_three) AS sum3, SUM(vote_four) AS sum4, SUM(vote_five) AS sum5, SUM(vote_six) AS sum6 FROM voters";
+    $result = mysqli_query($conn, $sql4);
+
+    while($row = mysqli_fetch_array($result)) {
+        $_SESSION["sumVote1"] =  $row['sum1'];
+        $_SESSION["sumVote2"] =  $row['sum2'];
+        $_SESSION["sumVote3"] =  $row['sum3'];
+        $_SESSION["sumVote4"] =  $row['sum4'];
+        $_SESSION["sumVote5"] =  $row['sum5'];
+        $_SESSION["sumVote6"] =  $row['sum6'];
+    }
+
+
+}
+
+
+
+function insertGifts($email, $giftOne, $giftTwo, $giftThree, $giftFour, $giftFive) {
+    
+    global $conn;
+
+    $sql = "INSERT INTO gifts (gift_id, gift_one, gift_two, gift_three, gift_four, gift_five) VALUES ((SELECT id FROM users WHERE user_email = '$email'),'".$giftOne."', '".$giftTwo."', '".$giftThree."', '".$giftFour."', '".$giftFive."') ";
+            
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            //
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    
+        mysqli_close($conn);
+        
 }

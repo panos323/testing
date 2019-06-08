@@ -5,7 +5,7 @@
     require "functions/db.php";
     require "functions/functions.php";
 
-    firstAvg();
+    findSum();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -24,7 +24,7 @@
     }
 
 ?>
-  <form method="POST" action="">
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" onSubmit="window.location.reload()">
     <div class="container  py-5">
         <div class="row py-4">
             <div class="col-md-12">
@@ -57,9 +57,9 @@
                                 </li>
                                 <li class="list-group-item text-danger">
                                     <?php 
-                                    if (isset($_SESSION["resultsVote1"])) {
-                                        echo $_SESSION["resultsVote1"] . "%";
-                                    }
+                                    if (isset($_SESSION["sumVote1"])) {
+                                        echo $_SESSION["sumVote1"];
+                                    } 
                                     ?>
                                 </li>
                             </ul>
@@ -79,17 +79,18 @@
                                 <li class="list-group-item text-danger">
                                     Vote
                                     <label class="checkbox">
-                                        <input type="hidden" name="check_list2" value="0"" type="checkbox"/>
+                                        <input type="hidden" name="check_list2" value="0" type="checkbox"/>
                                         <input type="checkbox"t name="check_list2" value="1"/>
                                         <span class="default"></span>
                                     </label>
                                 </li>
                                 <li class="list-group-item text-danger">
                                     <?php 
-                                    if (isset($_SESSION["resultsVote2"])) {
-                                        echo $_SESSION["resultsVote2"] . "%";
-                                    }
+                                    if (isset($_SESSION["sumVote2"])) {
+                                        echo $_SESSION["sumVote2"];
+                                    } 
                                     ?>
+                                    
                                 </li>
                             </ul>
                             <!--checkbox as button-->
@@ -116,10 +117,11 @@
                             </li>
                             <li class="list-group-item text-danger">
                                 <?php 
-                                if (isset($_SESSION["resultsVote3"])) {
-                                    echo $_SESSION["resultsVote3"] . "%";
-                                }
+                                if (isset($_SESSION["sumVote3"])) {
+                                    echo $_SESSION["sumVote3"];
+                                } 
                                 ?>
+                                
                             </li>
                         </ul>
                         <!--checkbox as button-->
@@ -152,10 +154,11 @@
                             </li>
                             <li class="list-group-item text-danger">
                                 <?php 
-                                if (isset($_SESSION["resultsVote4"])) {
-                                    echo $_SESSION["resultsVote4"] . "%";
-                                }
+                                if (isset($_SESSION["sumVote4"])) {
+                                    echo $_SESSION["sumVote4"];
+                                } 
                                 ?>
+                                
                             </li>
                         </ul>
                         <!--checkbox as button-->
@@ -180,10 +183,11 @@
                             </li>
                             <li class="list-group-item text-danger">
                                 <?php 
-                                if (isset($_SESSION["resultsVote5"])) {
-                                    echo $_SESSION["resultsVote5"] . "%";
-                                }
+                                if (isset($_SESSION["sumVote5"])) {
+                                    echo $_SESSION["sumVote5"];
+                                } 
                                 ?>
+                                
                             </li>
                         </ul>
                         <!--checkbox as button-->
@@ -210,10 +214,11 @@
                             </li>
                             <li class="list-group-item text-danger">
                                 <?php 
-                                if (isset($_SESSION["resultsVote6"])) {
-                                    echo $_SESSION["resultsVote6"] . "%";
-                                }
+                                if (isset($_SESSION["sumVote6"])) {
+                                    echo $_SESSION["sumVote6"];
+                                } 
                                 ?>
+                    
                             </li>
                         </ul>
                         <!--checkbox as button-->
@@ -238,6 +243,9 @@
                         <label for="msgVote">Leave your message (if you want)</label>
                         <textarea class="form-control" id="msgVote" rows="3" name="msgVote"></textarea>
                     </div>
+
+                    <input type="hidden" id="refreshed" value="no">
+
                     
                     <button type="submit" class="btn btn-success btn-block" name="vote-btn">Submit</button>
                 </form>

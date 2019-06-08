@@ -108,3 +108,15 @@
 .checkbox input:checked + .warning:after{border-color:#FFC107}
 .checkbox input:checked + .danger:after{border-color:#f44336}
  /*start checkbox as button */
+
+ .randomListGroup li:hover{
+     color:lightcoral;
+ }
+
+ .removeIt{
+     display:none;
+ }
+
+ .addIt{
+    display:block;
+}
