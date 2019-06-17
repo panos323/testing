@@ -22,7 +22,9 @@ $(document).ready(function() {
       if (!isValidName(firstname)) {
           $("#nameVote").css('border', "1px solid red");
           e.preventDefault();
-      } 
+      }  else {
+           $("#nameVote").css('border', "1px solid green");
+      }
   } //end function 
 
   function isValidName(firstname) {
@@ -34,7 +36,9 @@ $(document).ready(function() {
     if (!isValidEmail(email)) {
         $("#emailVote").css('border', "1px solid red");
         e.preventDefault();
-    } 
+    }  else {
+        $("#emailVote").css('border', "1px solid green");
+   }
 } //end function 
 
 function isValidEmail(email) {
@@ -122,6 +126,11 @@ function validateCheckboxField(isCheckForm,e) {
         y.addClass("removeIt");
       } 
       
+   });
+
+   $(".btnEscape").on("click", function() {
+        $("#youDidntWon, #youWon").css("display", "none");
+        
    });
 
 }); //PAGE LOADED

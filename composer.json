@@ -1,0 +1,17 @@
+{
+    "name": "panos/php_trainning",
+    "description": "trainning",
+    "type": "project",
+    "license": "GPL 3.0",
+    "authors": [
+        {
+            "name": "Panos",
+            "email": "12539gr@saeinstitute.edu"
+        }
+    ],
+    "require": {
+        "league/color-extractor": "0.3.*",
+        "monolog/monolog": "^1.24",
+        "php-console/php-console": "^3.1"
+    }
+}

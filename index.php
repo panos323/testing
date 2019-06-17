@@ -64,4 +64,5 @@
     </div><!--container-->
 
 
-<?php include_once "./includes/footer.php";?>
+<?php include_once "./includes/footer.php";?>[2019-06-08 17:47:00] name.WARNING: Foo [] []
+[2019-06-08 17:47:00] name.ERROR: Bar [] []

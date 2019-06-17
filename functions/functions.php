@@ -229,3 +229,45 @@ function insertGifts($email, $giftOne, $giftTwo, $giftThree, $giftFour, $giftFiv
         mysqli_close($conn);
         
 }
+
+
+function randomWinners() {
+    global $keys;
+    $keys = [
+        2,4,6,8,10,17,
+        20,28,35,40,50,
+        60,62,68,70,74,
+        80,85,90,96,100
+    ];
+}
+
+
+
+function insertWinners($email) {
+    
+    global $conn;
+    global $keys;
+    // echo "<pre>";
+    // print_r($keys);
+    $instant = 0;
+
+    $sql = "INSERT INTO winners (user_email, instant_win, created) VALUES ((SELECT user_email FROM users WHERE user_email = '".$email."'),'".$instant."',  NOW()) ";
+            
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            $last_id = mysqli_insert_id($conn);
+            if (in_array($last_id, $keys)) {
+                $instant = 1;
+                $sql3 = "UPDATE winners SET instant_win = '".$instant."' WHERE user_email = '".$email."' AND created = NOW()";
+                $result2 = mysqli_query($conn, $sql3);
+                $_SESSION['win'] = true;
+            } 
+            //
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    
+        mysqli_close($conn);
+        
+}
